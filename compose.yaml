@@ -18,5 +18,20 @@ services:
       timeout: 5s
       retries: 10
 
+  app:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Inside Compose the database host is the service name, not localhost.
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-leyesapi}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-leyesapi}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-leyesapi}
+      # The app is already running inside Compose; it must not try to start it again.
+      SPRING_DOCKER_COMPOSE_ENABLED: 'false'
+    ports:
+      - '8080:8080'
+
 volumes:
   postgres_data:

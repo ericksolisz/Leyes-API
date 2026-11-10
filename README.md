@@ -80,7 +80,13 @@ Then run the application (Spring Boot also starts the Compose services automatic
 ./mvnw spring-boot:run
 ```
 
-> The application itself is not containerized yet; this section will be expanded as the project matures.
+To run the whole stack (database + application) in containers instead:
+
+```bash
+docker compose up --build
+```
+
+The health endpoint is then available at <http://localhost:8080/actuator/health>.
 
 ## License
 

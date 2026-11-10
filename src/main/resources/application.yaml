@@ -1,3 +1,9 @@
 spring:
   application:
     name: LeyesAPI
+  docker:
+    compose:
+      start:
+        # In local development (./mvnw spring-boot:run) only start the database;
+        # the `app` service in compose.yaml is for running the whole stack in containers.
+        arguments: postgres
