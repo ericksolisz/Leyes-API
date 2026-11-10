@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: 'pgvector/pgvector:pg17'
+    labels:
+      # Tells Spring Boot's Docker Compose support that this (custom-named) image is PostgreSQL
+      org.springframework.boot.service-connection: postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-leyesapi}
+      POSTGRES_USER: ${POSTGRES_USER:-leyesapi}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-leyesapi}
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-leyesapi} -d ${POSTGRES_DB:-leyesapi}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:
