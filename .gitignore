@@ -32,14 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
-### AI Learning Toolkit (local only) ###
-CLAUDE.md
-.claude/
-learning/
-Manware-s-AI-Learning-Toolkit/
-
-Plan.md
-Plan.es.md
-
 ### Local environment overrides ###
 .env
