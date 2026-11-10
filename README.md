@@ -90,4 +90,6 @@ The health endpoint is then available at <http://localhost:8080/actuator/health>
 
 ## License
 
-To be decided.
+The source code is licensed under the [Apache License 2.0](LICENSE).
+
+This license covers the code only. The legal texts processed by this project come from official sources that have their own terms.
